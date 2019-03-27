@@ -32,3 +32,91 @@
     }
   }
 }
+
+// Menu Overlay.
+.navigation {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.9;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  .brand,
+  .navlinks {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .navlinks {
+    margin: 0;
+    padding: 0;
+    background: darken($primary-color, 5);
+    list-style: none;
+    transform: translate3d(0, -100%, 0);
+    @include ease_in();
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .brand {
+    margin: 0;
+    padding: 0;
+    background: $primary-color;
+    transform: translate3d(0, 100%, 0);
+    @include ease_in();
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .potrait {
+      width: 250px;
+      height: 250px;
+      background: url("../img/background.jpg");
+      border-radius: 50%;
+      border: solid 3px $secondary-color;
+    }
+  }
+  .nav_item {
+    transform: translate3d(600px, 0, 0);
+    @include ease_in();
+
+    &.active > a {
+      color: $secondary-color;
+    }
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .navlink {
+    display: inline-block;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 20px;
+    padding: 1rem 0;
+
+    &:hover {
+      color: $secondary-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Creating A Delay in The Loading Navlinks.
+@for $i from 1 through 4 {
+  .nav_item:nth-child(#{$i}) {
+    transition-delay: $i * 0.1s;
+  }
+}
