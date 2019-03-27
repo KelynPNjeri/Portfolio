@@ -91,6 +91,32 @@
 .nav_item:nth-child(4) {
   transition-delay: 0.4s; }
 
+@media screen and (max-width: 768px) {
+  main {
+    align-content: center;
+    text-align: center; }
+    main .lg_heading {
+      line-height: 1;
+      margin-bottom: 1rem; }
+  .brand,
+  .navlinks {
+    width: 100%;
+    min-height: 0; }
+    .brand.show,
+    .navlinks.show {
+      transform: translate3d(0, 0, 0); }
+  .navlinks {
+    height: 75vh;
+    transform: translate3d(-100%, 0, 0);
+    font-size: 24px; }
+  .brand {
+    height: 25vh;
+    transform: translate3d(100%, 0, 0); } }
+
+@media screen and (max-width: 500px) {
+  main#homepage h1 {
+    margin-top: 10vh; } }
+
 * {
   box-sizing: border-box; }
 
