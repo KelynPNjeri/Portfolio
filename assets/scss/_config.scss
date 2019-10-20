@@ -1,0 +1,52 @@
+$primary-color: #444;
+$secondary-color: #eece1a;
+$show-image: true;
+$background-img: url(../img/background.jpg);
+$bg-opacity: 0.9;
+
+@mixin ease_in {
+  transition: all 0.5s ease-in;
+}
+@mixin background {
+  @if $show-image {
+    &#image {
+      background: $background-img;
+      background-attachment: fixed;
+      background-size: cover;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        background: rgba($primary-color, $bg-opacity);
+      }
+    }
+  }
+}
+// Media Query Mixins.
+@mixin smallScreen {
+  @media screen and (max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin mediumScreen {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin largeScreen {
+  @media screen and (min-width: 769px) and (max-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin xLScreen {
+  @media screen and (min-width: 1171px) {
+    @content;
+  }
+}
